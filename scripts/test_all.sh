@@ -10,7 +10,8 @@ PRED_CSV="$ROOT_DIR/data/cropped/test/preds.csv"
 
 python3 "$ROOT_DIR/src/inference/dental_inference_dir.py" \
   --data-dir "$TEST_IMG_DIR" \
-  --out-csv "$PRED_CSV"
+  --out-csv "$PRED_CSV" \ 
+  #--ckpt "$ROOT_DIR/checkpoints/clip_finetuned.pt"
 
 python3 "$ROOT_DIR/src/eval/eval.py" \
   --gt-csv "$TEST_GT_CSV" \
