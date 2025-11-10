@@ -44,13 +44,13 @@ def main():
     ap.add_argument("--ext", default="png")
     args = ap.parse_args()
 
-    crops_dir = Path(args.crops_dir)
+    data_dir = Path(args.data_dir)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model, preprocess, text_feats = load_clip(device)
 
     rows = []
 
-    for img_path in sorted(crops_dir.glob(f"*.{args.ext}")):
+    for img_path in sorted(data_dir.glob(f"*.{args.ext}")):
         img = Image.open(img_path).convert("RGB")
         img_t = preprocess(img).unsqueeze(0).to(device)
 
